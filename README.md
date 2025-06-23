@@ -13,7 +13,7 @@ Switch to the `compose` branch to learn the
 
 - Install `npm`
 
-#### Start Server:
+#### Start Server :
 
 ```
 cd mern/server
