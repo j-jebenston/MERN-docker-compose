@@ -1,0 +1,36 @@
+services:
+  frontend:
+    build: ./mern/frontend
+    container_name: frontend
+    networks:
+      - mern
+    ports:
+      - "5173:5173"
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    networks:
+      - mern
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  backend:
+    build: ./mern/backend
+    container_name: backend
+    networks:
+      - mern
+    ports:
+      - "5050:5050"
+    depends_on:
+      - mongo
+
+networks:
+  mern:
+    driver: bridge
+
+volumes:
+  mongo_data:
+    driver: local
